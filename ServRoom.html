@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBI Server Room - Access Restricted</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f, #1b1b1b);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 100px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            width: 80%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #4CAF50;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 2px 2px 10px rgba(0, 255, 0, 0.7);
+        }
+
+        .info {
+            font-size: 22px;
+            color: #ddd;
+            margin-top: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 24px;
+            padding: 15px 40px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.4);
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 255, 0, 0.7);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 15px;
+            background-color: #232323;
+            color: #aaa;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .glowing-text {
+            color: #ff4081;
+            text-shadow: 0 0 5px rgba(255, 64, 129, 0.8), 0 0 10px rgba(255, 64, 129, 0.6);
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 64, 129, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 64, 129, 0.6);
+        }
+
+        /* Animation for page load */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            animation: fadeIn 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>FBI Server Room</h1>
+        <p class="info">Access to restricted information requires a secret key. Please enter the correct key below.</p>
+        <button class="button" onclick="checkSecretKey()">Enter Secret Key</button>
+
+        <div class="hidden-message" id="hiddenMessage">
+            <h3 class="glowing-text">FBI Data Access Granted:</h3>
+            <p><strong>Killer Name:</strong> Diego Paul</p>
+            <img src="https://i.top4top.io/p_3299qpzsh1.jpg" alt="Diego Paul" style="width: 250px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 255, 0, 0.5);">
+            <p class="info">Flag has been obtained. Please contact the following bot on Telegram:</p>
+            <p><a href="https://t.me/TheHack4fun_bot" target="_blank" style="color: #4CAF50; font-weight: bold;">Contact the Bot here</a></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 FBI Server Room - All rights reserved</p>
+    </div>
+
+    <script>
+        const correctSecretKey = "banana2025";
+        
+        function checkSecretKey() {
+            const secretKey = prompt("Enter the secret key to gain access:").trim();
+            
+            // Check if the entered key matches the correct one
+            if (secretKey === correctSecretKey) {
+                alert("Access granted! Data downloaded.");
+                document.getElementById("hiddenMessage").style.display = "block";
+
+                // Trigger file download (you can change this link to a valid file URL)
+                const fileUrl = "https://www.mediafire.com/file/8892614gtc8ozgi/hash.txt/file";
+                const link = document.createElement("a");
+                link.href = fileUrl;
+                link.download = "FBI_Secret_File";  // Customize file name
+                link.click();
+            } else {
+                alert("Incorrect Secret Key. Access Denied.");
+            }
+        }
+    </script>
+
+</body>
+</html>
