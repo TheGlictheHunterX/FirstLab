@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Police Serv - Data Server</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #232323;
+            padding-top: 20px;
+            padding-left: 10px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar h2 {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 12px;
+            font-size: 18px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #333;
+        }
+
+        .file-list {
+            flex-grow: 1;
+            background-color: #282828;
+            padding: 20px;
+        }
+
+        .file-list h3 {
+            color: #4CAF50;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .file-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 18px;
+            border: 1px solid #444;
+            color: #ddd;
+        }
+
+        .file-item:hover {
+            background-color: #444;
+        }
+
+        .file-content {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            background-color: #232323;
+            width: 100%;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* Style for active file */
+        .active {
+            background-color: #4CAF50 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <h2>The Police Serv</h2>
+        <ul>
+            <li class="file-link" data-file="file1">Case_Report_1956.txt</li>
+            <li class="file-link" data-file="file5">evidence_notes.txt</li>
+            <li class="file-link" data-file="file6">Case Death Report.txt</li> <!-- New File Added -->
+            <li class="file-link" data-file="file7">Server.txt</li> <!-- New File Added for Server -->
+        </ul>
+    </div>
+
+    <!-- Main File Display Area -->
+    <div class="file-list">
+        <h3>Server Files</h3>
+        <div id="file-content" class="file-content">
+            <h4>Select a file to view its contents</h4>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2025 The Police Serv - Data Server. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Simulated server file contents
+        const fileContents = {
+            file1: `Case Report (1956) - Incident Overview\n\nA police officer was tragically killed in 1956. Despite the efforts of the FBI, the killer was never found.\nThe case remains open.\n\nReport filed on: January 1956`,
+            file2: `{
+    "server": {
+        "name": "The Police Serv",
+        "status": "active",
+        "location": "Headquarters",
+        "last_maintenance": "December 2024"
+    },
+    "files": [
+        "Case_Report_1956.txt",
+        "server_config.json",
+        "incident_log.log",
+        "suspects_data.json",
+        "evidence_notes.txt",
+        "Escaped.txt"
+    ]
+}`,
+            file3: `Incident Log - 1956\n\nLog Entry 1: "Received a report about the officer's death. FBI called for immediate investigation."\nLog Entry 2: "Suspect profiles are being reviewed for further investigation."`,
+            file4: `[
+    {"name": "John Doe", "alias": "The Phantom", "last_seen": "1956", "status": "unknown"},
+    {"name": "Jane Doe", "alias": "The Shadow", "last_seen": "1956", "status": "missing"}
+]`,
+            file5: `Evidence Notes - Officer's Death\n\nThe officer had been investigating a series of murders before his own tragic death. Evidence points to multiple suspects, but no arrests have been made. Notes on possible locations and connections to other criminal cases are still pending review.`,
+            file6: `Email From The Head Police Dept :\n\nIn 12 November, PaulJson was tasked with creating this server to store all police reports. However, the Head Police Department confirms that I don't possess the secret key to this server because the developer created it in another panel.\n\nNow, I face the hard work of finding the killer's name without that crucial key.`,
+            file7: `Heyy Jay, I'm Deived, I'm finished now from The Secret Server. You can visit it at this link: [Visit the Secret Server](https://findemelab.vercel.app/ServRoom.html)` // New File Content
+        };
+
+        // Add event listeners to file links
+        const fileLinks = document.querySelectorAll('.file-link');
+        fileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Clear the 'active' class from all links
+                fileLinks.forEach(link => link.classList.remove('active'));
+                // Add 'active' class to the clicked link
+                this.classList.add('active');
+                // Get the corresponding file content and display it
+                const fileName = this.getAttribute('data-file');
+                let content = fileContents[fileName];
+
+                // If the content contains a link, replace the placeholder with an actual HTML link
+                if (fileName === 'file7') {
+                    content = content.replace('(https://findemelab.vercel.app/ServRoom.html)', '<a href="https://findemelab.vercel.app/ServRoom.html" target="_blank" style="color: #4CAF50;">Visit the Secret Server</a>');
+                }
+                
+                document.getElementById('file-content').innerHTML = `<pre>${content}</pre>`;
+            });
+        });
+    </script>
+
+</body>
+</html>
