@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Who Im Lab - CTF Challenge</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: titleAnimation 3s ease-in-out infinite;
+        }
+
+        h1:hover {
+            color: #00FF00;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.6);
+        }
+
+        @keyframes titleAnimation {
+            0% {
+                color: #ffffff;
+                transform: translateX(-100px);
+            }
+
+            50% {
+                color: #00FF00;
+                transform: translateX(0);
+            }
+
+            100% {
+                color: #ffffff;
+                transform: translateX(100px);
+            }
+        }
+
+        .container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .lab-description {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .lab-description h2 {
+            font-size: 2em;
+            color: #000000;
+            margin-bottom: 15px;
+            font-weight: bold;
+            position: relative;
+            animation: textReveal 1.5s ease-out;
+        }
+
+        .lab-description p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #555;
+            opacity: 0;
+            animation: fadeText 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeText {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes textReveal {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .start-button {
+            background-color: #000000;
+            color: white;
+            font-size: 1.5em;
+            padding: 20px 40px;
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button:hover {
+            background-color: #333333;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Who Im Lab - CTF Challenge</h1>
+        <p>By LunnySec Team</p>
+    </header>
+
+    <div class="container">
+        <div class="lab-description">
+            <h2>Lab Scenario : </h2>
+            <p>One day, a father lost his boy in a terrible accident. Now, the father is desperate to find his son's
+                location and needs your help to solve the puzzle. It's up to you to uncover the clues, crack the codes,
+                and help reunite the father with his son.</p>
+
+            <p>The challenge involves navigating through different levels of encryption, decoding hidden messages, and
+                following digital traces to find the boy’s exact location. Are you ready to take on this mission and help
+                the father? The journey begins now!</p>
+        </div>
+
+        <a href="index.html" class="start-button">Start Challenge</a>
+    </div>
+
+    <footer>
+        <p>© 2025 LunnySec Team. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

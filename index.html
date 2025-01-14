@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Who Im Lab - CTF Challenge - Father’s Laptop</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1f1f, #363636);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .laptop {
+            width: 900px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            font-family: 'Arial', sans-serif;
+            border: 2px solid #555;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100%;
+            height: 80%;
+            background-color: transparent;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .header {
+            background-color: #222;
+            color: #fff;
+            font-size: 1.5em;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .header .time {
+            font-size: 1.2em;
+            color: #bbb;
+        }
+
+        .header .wifi-status {
+            font-size: 1.2em;
+            color: #00FF00;
+        }
+
+        .header .notifications {
+            font-size: 1.2em;
+            color: #ffcc00;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .icon-button {
+            width: 120px;
+            height: 120px;
+            background-color: #444;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-button:hover {
+            background-color: #00FF00;
+            transform: scale(1.1);
+        }
+
+        .icon-button i {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .icon-button span {
+            font-size: 0.9em;
+        }
+
+        .footer {
+            width: 100%;
+            height: 80px;
+            background-color: #222;
+            border-radius: 0 0 15px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00FF00;
+            box-shadow: inset 0 5px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .footer a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .screen:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        .content-area {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .content-area h3 {
+            color: #00FF00;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .content-area p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        /* Adding style for the secret message */
+        .secret-message {
+            color: #00FF00;  /* Green text color */
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="laptop">
+        <div class="screen">
+            <div class="header">
+                <div>Rafiell's MacBook</div>
+                <div class="time">5:00 PM</div>
+                <div class="wifi-status"><i class="fas fa-wifi"></i> Connected</div>
+                <div class="notifications">
+                    <i class="fas fa-bell"></i> 3 New Notifications
+                </div>
+            </div>
+
+            <div class="icon-container">
+                <!-- Son Phone Button: Linking to Whoim.html -->
+                <a href="Whoim.html" class="icon-button">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Son Phone</span>
+                </a>
+
+                <!-- FTP SERV Button: Linking to ftp.html -->
+                <a href="ftp.html" class="icon-button">
+                    <i class="fas fa-server"></i>
+                    <span>FTP SERV</span>
+                </a>
+
+                <!-- Note Book Button -->
+                <div class="icon-button" onclick="openContent('notebook')">
+                    <i class="fas fa-book"></i>
+                    <span>Note Book</span>
+                </div>
+
+                <!-- Favs Button -->
+                <div class="icon-button" onclick="openContent('favs')">
+                    <i class="fas fa-star"></i>
+                    <span>Favs</span>
+                </div>
+
+                <!-- Messages Button -->
+                <div class="icon-button" onclick="openContent('messages')">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Messages</span>
+                </div>
+
+                <!-- Work Files Button -->
+                <div class="icon-button" onclick="openContent('work')">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Work Files</span>
+                </div>
+
+                <!-- Secret Button -->
+                <div class="icon-button" onclick="showSecret()">
+                    <i class="fas fa-lock"></i>
+                    <span>Secret</span>
+                </div>
+            </div>
+
+            <!-- Content Area (Dynamic content will appear here) -->
+            <div class="content-area" id="content-area">
+                <!-- Default content or initial message can go here -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="index.html">Return to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function openContent(type) {
+            var contentArea = document.getElementById('content-area');
+
+            if (type === 'notebook') {
+                contentArea.innerHTML = `
+                    <h3>Note Book</h3>
+                    <p>On 5 November 2015 I lost my WiFi in Los Angeles due to heart disease.</p>
+                `;
+            }
+            if (type === 'favs') {
+                contentArea.innerHTML = `
+                    <h3>Favs</h3>
+                    <p>After I lost my WiFi, I like to visit Downtown City in New York. I love this place so much because I met my wife there.</p>
+                `;
+            }
+            if (type === 'messages') {
+                contentArea.innerHTML = `
+                    <h3>Messages</h3>
+                    <p><strong>Jhon:</strong> Hey, why didn't you come to work, bro?!</p>
+                    <p><strong>Rafiell:</strong> You did a big mistake, Sami. Why did you do it? Why? They haven't family now.</p>
+                    <p><strong>Claud:</strong> I hope you're okay, my friend.</p>
+                `;
+            }
+            if (type === 'work') {
+                contentArea.innerHTML = `
+                    <h3>Work Files</h3>
+                    <p>All emails were deleted by the user.</p>
+                `;
+            }
+        }
+
+        function showSecret() {
+            var contentArea = document.getElementById('content-area');
+            contentArea.innerHTML = `
+                <h3>Secret</h3>
+                <p class="secret-message"><strong>Secret Key:</strong> a2Ad8VNx4RA06lH8Y8TkaQ==</p>
+            `;
+        }
+    </script>
+
+</body>
+
+</html>

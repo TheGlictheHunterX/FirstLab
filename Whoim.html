@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Who Im Lab - CTF Challenge - Phone Conversation</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .phone {
+            width: 400px;
+            height: 700px;
+            background-color: #111;
+            border-radius: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            border: 2px solid #00FF00;
+        }
+
+        .phone-header {
+            background-color: #000;
+            color: #00FF00;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #00FF00;
+        }
+
+        .phone-header .time {
+            font-size: 1em;
+            color: #bbb;
+        }
+
+        .phone-screen {
+            padding: 20px;
+            height: 500px;
+            overflow-y: scroll;
+            background-color: #0d0d0d;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .message .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00FF00;
+            margin-right: 15px;
+        }
+
+        .message .icon.rafiell {
+            background-color: #2980b9;
+        }
+
+        .message .icon.son {
+            background-color: #27ae60;
+        }
+
+        .message .sender {
+            font-weight: bold;
+            color: #00FF00;
+            font-size: 1.1em;
+        }
+
+        .message .text {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-top: 5px;
+            max-width: 80%;
+        }
+
+        .message.rafiell .sender {
+            color: #2980b9;
+            text-align: left;
+        }
+
+        .message.son .sender {
+            color: #27ae60;
+            text-align: right;
+        }
+
+        .message.rafiell .text {
+            text-align: left;
+        }
+
+        .message.son .text {
+            text-align: right;
+        }
+
+        .phone-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background-color: #000;
+            text-align: center;
+            color: #00FF00;
+            font-size: 1em;
+        }
+
+        .phone-footer a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .phone-footer a:hover {
+            color: #27ae60;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        /* Fake Home Button */
+        .fake-button {
+            width: 80px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            left: calc(50% - 40px);
+            border: 2px solid #00FF00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .fake-button:hover {
+            transform: scale(1.1);
+        }
+
+        .fake-button:active {
+            transform: scale(0.95);
+        }
+
+        .fake-button::after {
+            content: 'Home';
+            color: #00FF00;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            line-height: 80px;
+            display: block;
+        }
+
+        /* Link to go to index.html when clicked on the fake button */
+        .fake-button a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="phone">
+        <div class="phone-header">
+            <div>Rafiell's iPhone</div>
+            <div class="time">5:00 PM</div>
+        </div>
+
+        <div class="phone-screen">
+            <div class="message rafiell">
+                <div class="icon rafiell"></div>
+                <div>
+                    <div class="sender">Rafiell:</div>
+                    <div class="text">When do you finish your study?</div>
+                </div>
+            </div>
+            <div class="message son">
+                <div class="icon son"></div>
+                <div>
+                    <div class="sender">Son:</div>
+                    <div class="text">At 5:00 PM.</div>
+                </div>
+            </div>
+            <div class="message rafiell">
+                <div class="icon rafiell"></div>
+                <div>
+                    <div class="sender">Rafiell:</div>
+                    <div class="text">Okay, stay at the school. I want to take you with me to visit our friend in California (Matteo).</div>
+                </div>
+            </div>
+            <div class="message son">
+                <div class="icon son"></div>
+                <div>
+                    <div class="sender">Son:</div>
+                    <div class="text">Okay, Father. See you at 5:00 PM.</div>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="fake-button">
+            <a href="index.html"></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
